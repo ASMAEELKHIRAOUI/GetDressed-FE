@@ -1,13 +1,23 @@
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.scss'], 
 })
 export class AppComponent {
-  title = 'GetDressed-FE';
+  
+   title = "get dressed"
+   constructor(private http: HttpClient, private modalService: NgbModal) {}
+
+  public open(modal: any): void {
+    this.modalService.open(modal);
+  }
+
 }
