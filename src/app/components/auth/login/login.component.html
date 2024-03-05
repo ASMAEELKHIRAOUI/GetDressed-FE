@@ -2,10 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-sm-12">
-                <form class="card auth_form">
+                <form class="card auth_form" (ngSubmit)="onSubmit()" #f="ngForm">
                     <div class="header">
                         <!-- <img class="logo" src="assets/images/logo.svg" alt=""> -->
-                        <h5>Log in</h5>
+                        <h5>Log din</h5>
                     </div>
                     <div class="body">
                         <div class="input-group mb-3">

@@ -28,11 +28,8 @@ export class LoginComponent {
 
     this.authService.login(email, password).subscribe({
       next: (data: any) => {
-        // localStorage.setItem('member', JSON.stringify(data.member));
-        localStorage.setItem('token', data.access_token);
-        console.log("cc")
-        // localStorage.setItem('refreshToken', data.refresh_token);
-        // this.router.navigate(['/']);
+        localStorage.setItem('token', data.token);
+        this.router.navigate(['/']);
       },
       error: (err) => {
         console.error(err);
