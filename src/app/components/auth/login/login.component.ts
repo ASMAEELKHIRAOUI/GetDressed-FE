@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormControlDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,
-    ReactiveFormsModule,
-    CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -29,6 +27,12 @@ export class LoginComponent {
     this.authService.login(email, password).subscribe({
       next: (data: any) => {
         localStorage.setItem('token', data.token);
+        localStorage.setItem('id', data.userId);
+        localStorage.setItem('firstName', data.firstName);
+        localStorage.setItem('lastName', data.lastName);
+        localStorage.setItem('email', data.email);
+        localStorage.setItem('role', data.role);
+        localStorage.setItem('authorities', data.authorities);
         this.router.navigate(['/']);
       },
       error: (err) => {

@@ -17,11 +17,12 @@ export class AuthService {
     });
   }
 
-  register(email: string, password: string, name: string) {
+  register(email: string, password: string, firstName: string, lastName: string) {
     return this.http.post(`${BASE_URL}auth/register`, {
       email,
       password,
-      name,
+      firstName,
+      lastName
     });
   }
 
