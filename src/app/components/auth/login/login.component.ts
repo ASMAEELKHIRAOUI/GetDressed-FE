@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { FormControlDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../../services/auth/auth.service';
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
