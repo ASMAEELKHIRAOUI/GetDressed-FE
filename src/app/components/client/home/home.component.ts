@@ -19,8 +19,9 @@ export class HomeComponent {
     this.productService.getProducts().subscribe((data: Product[]) => {
       this.products = data;
       this.products.forEach(product => {
-        product.price = product.price - (product.promotion * (product.price / 100))
-
+        if (product.price !== undefined && product.promotion !== undefined) {
+          product.price = product.price - (product.promotion * (product.price / 100))
+        }
       });
     })
   }
