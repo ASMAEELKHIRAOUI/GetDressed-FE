@@ -23,23 +23,17 @@ export class ListOrderComponent {
     })
   }
 
-  deleteOrder(id: number | undefined): void {
-    if (id) {
-      this.orderService.deleteOrder(id)
-        .subscribe({
-          next: (res) => {
-            console.log(res);
-            window.location.reload();
-          },
-          error: (e) => console.error(e)
-        });
-    }
-  }
-
   editOrder(id: number | undefined): void {
     if (id) {
       console.log('Order id:', id);
       this.router.navigate(['/dashboard/order/edit', id]);
+    }
+  }
+
+  orderDetails(id: number | undefined): void{
+    if(id){
+      console.log('Order id:', id);
+      this.router.navigate(['/dashboard/order/details', id]);
     }
   }
 

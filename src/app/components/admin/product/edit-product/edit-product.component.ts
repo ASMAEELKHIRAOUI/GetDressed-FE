@@ -17,7 +17,6 @@ import { FormsModule } from '@angular/forms';
 export class EditProductComponent {
 
   productId: number = 0;
-  productToEdit: Product = new CProduct();
   categories: Category[] = []
   toSave: Product = new CProduct();
 
@@ -31,7 +30,7 @@ export class EditProductComponent {
         if (this.productId !== 0) {
           this.productService.getProduct(this.productId).subscribe((data: Product) => {
             if (data) {
-              this.productToEdit = data;
+              this.toSave = data;
             } else {
               console.error("Product not found");
             }

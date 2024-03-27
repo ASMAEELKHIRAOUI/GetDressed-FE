@@ -9,6 +9,7 @@ import { ListProductComponent } from './components/admin/product/list-product/li
 import { AddProductComponent } from './components/admin/product/add-product/add-product.component';
 import { EditProductComponent } from './components/admin/product/edit-product/edit-product.component';
 import { ListOrderComponent } from './components/admin/order/list-order/list-order.component';
+import { EditOrderComponent } from './components/admin/order/edit-order/edit-order.component';
 
 export const routes: Routes = [
     {
@@ -33,7 +34,8 @@ export const routes: Routes = [
             { path: 'product', component: ListProductComponent },
             { path: 'product/add', component: AddProductComponent },
             { path: 'product/edit/:id', component: EditProductComponent },
-            { path: 'order', component: ListOrderComponent }
+            { path: 'order', component: ListOrderComponent },
+            { path: 'order/edit/:id', component: EditOrderComponent }
         ]
     },
 

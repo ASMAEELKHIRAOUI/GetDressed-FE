@@ -8,9 +8,6 @@
                         <div class="header">
                             <h2><strong style="font-size: 30px;">Orders</strong></h2>
                         </div>
-                        <div class="d-flex justify-content-end p-3">
-                            <button class="btn btn-primary" routerLink="/dashboard/order/add">+ Add Order</button>
-                        </div>
                         <div class="body">
                             <div class="table-responsive">
                                 <table class="table table-hover product_item_list c_table theme-color mb-0">
@@ -40,7 +37,7 @@
                                                     class="btn btn-default waves-effect waves-float btn-sm waves-green mx-2" (click)="editOrder(order.id)"><i
                                                         class="zmdi zmdi-edit"></i></a>
                                                 <a href="javascript:void(0);"
-                                                    class="btn btn-default waves-effect waves-float btn-sm waves-red mx-2" (click)="deleteOrder(order.id)"><i
+                                                    class="btn btn-default waves-effect waves-float btn-sm waves-red mx-2" (click)="orderDetails(order.id)"><i
                                                         class="zmdi zmdi-delete"></i></a>
                                             </td>
                                         </tr>

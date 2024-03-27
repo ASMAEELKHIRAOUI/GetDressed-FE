@@ -20,17 +20,13 @@ export class OrderService {
   }
 
   getOrder(id: number): Observable<Order> {
-    return this.http.get<Order[]>(this.apiUrl + "/get" + `/${id}`).pipe(
+    return this.http.get<Order[]>(`${this.apiUrl}/${id}`).pipe(
       map((res: any) => res.data)
     )
   }
 
-  addOrder(order: Order): Observable<ResponseModel<Order>>{
+  addOrder(order: Order): Observable<ResponseModel<Order>> {
     return this.http.post<ResponseModel<Order>>(this.apiUrl, order);
-  }
-
-  deleteOrder(id: number | undefined): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
   editOrder(id: number | undefined, order: Order): Observable<any> {
