@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { CProduct, Product } from '../../../../models/product';
+import { CProduct, Product } from '../../../../modals/product';
 import { ProductService } from '../../../../services/product/product.service';
-import { Category } from '../../../../models/category';
+import { Category } from '../../../../modals/category';
 import { CategoryService } from '../../../../services/category/category.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class AddProductComponent {
   categories: Category[] = [];
   toSave: Product = new CProduct();
 
-  constructor(private productService: ProductService, private router: Router, private categoryService: CategoryService){}
+  constructor(private productService: ProductService, private router: Router, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe((data: Category[]) => {
@@ -28,22 +28,22 @@ export class AddProductComponent {
     })
   }
 
-  onSubmit(){
+  onSubmit() {
     this.productService.addProduct(this.toSave).subscribe({
       next: data => {
         this.onSuccessSave(data?.data);
         // this.notificationService.show(['Product added successfully'], 'success');
         this.router.navigate(['/dashboard/product']);
       },
-      error: (err)=>{
+      error: (err) => {
         console.log(err.error.date[0])
         // this.notificationService.show([err.error.date[0]], 'error');
       }
     })
   }
 
-  onSuccessSave(product?: Product){
-    if(product){
+  onSuccessSave(product?: Product) {
+    if (product) {
       this.products.push(product);
     }
   }

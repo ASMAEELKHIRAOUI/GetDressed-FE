@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../../../services/product/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CProduct, Product } from '../../../../models/product';
+import { CProduct, Product } from '../../../../modals/product';
 import { CategoryService } from '../../../../services/category/category.service';
-import { Category } from '../../../../models/category';
+import { Category } from '../../../../modals/category';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -50,14 +50,14 @@ export class EditProductComponent {
 
   }
 
-  onSubmit(){
+  onSubmit() {
     this.productService.editProduct(this.productId, this.toSave).subscribe({
       next: data => {
         // this.onSuccessSave(data?.data);
         // this.notificationService.show(['Product added successfully'], 'success');
         this.router.navigate(['/dashboard/product']);
       },
-      error: (err)=>{
+      error: (err) => {
         console.log(err.error.date[0])
         // this.notificationService.show([err.error.date[0]], 'error');
       }

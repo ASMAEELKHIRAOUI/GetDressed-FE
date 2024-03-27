@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Product } from '../../../../models/product';
+import { Product } from '../../../../modals/product';
 import { ProductService } from '../../../../services/product/product.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
@@ -23,7 +23,7 @@ export class ListProductComponent {
   }
 
   deleteProduct(id: number | undefined): void {
-    if (id){
+    if (id) {
       this.productService.deleteProduct(id)
         .subscribe({
           next: (res) => {

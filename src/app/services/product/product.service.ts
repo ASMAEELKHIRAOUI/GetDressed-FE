@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Product } from '../../models/product';
+import { Product } from '../../modals/product';
 import { ResponseModel } from '../../core/response.model';
 
 @Injectable({
@@ -25,7 +25,7 @@ export class ProductService {
     )
   }
 
-  addProduct(product: Product): Observable<ResponseModel<Product>>{
+  addProduct(product: Product): Observable<ResponseModel<Product>> {
     return this.http.post<ResponseModel<Product>>(this.apiUrl, product);
   }
 

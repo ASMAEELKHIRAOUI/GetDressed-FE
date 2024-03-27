@@ -8,6 +8,7 @@ import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
 import { ListProductComponent } from './components/admin/product/list-product/list-product.component';
 import { AddProductComponent } from './components/admin/product/add-product/add-product.component';
 import { EditProductComponent } from './components/admin/product/edit-product/edit-product.component';
+import { ListOrderComponent } from './components/admin/order/list-order/list-order.component';
 
 export const routes: Routes = [
     {
@@ -31,7 +32,8 @@ export const routes: Routes = [
         children: [
             { path: 'product', component: ListProductComponent },
             { path: 'product/add', component: AddProductComponent },
-            { path: 'product/edit/:id', component: EditProductComponent }
+            { path: 'product/edit/:id', component: EditProductComponent },
+            { path: 'order', component: ListOrderComponent }
         ]
     },
 
