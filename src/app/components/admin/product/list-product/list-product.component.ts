@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Product } from '../../../../models/product';
 import { ProductService } from '../../../../services/product/product.service';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -14,7 +14,7 @@ import { RouterLink } from '@angular/router';
 export class ListProductComponent {
   products: Product[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data: Product[]) => {
@@ -22,5 +22,24 @@ export class ListProductComponent {
     })
   }
 
-  
+  deleteProduct(id: number | undefined): void {
+    if (id){
+      this.productService.deleteProduct(id)
+        .subscribe({
+          next: (res) => {
+            console.log(res);
+            window.location.reload();
+          },
+          error: (e) => console.error(e)
+        });
+    }
+  }
+
+  editProduct(id: number | undefined): void {
+    if (id) {
+      console.log('Product id:', id);
+      this.router.navigate(['/dashboard/product/edit', id]);
+    }
+  }
+
 }

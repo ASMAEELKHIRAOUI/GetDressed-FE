@@ -37,10 +37,10 @@
                                             <td>{{ product.stock }}</td>
                                             <td>
                                                 <a href="javascript:void(0);"
-                                                    class="btn btn-default waves-effect waves-float btn-sm waves-green mx-2"><i
+                                                    class="btn btn-default waves-effect waves-float btn-sm waves-green mx-2" (click)="editProduct(product.id)"><i
                                                         class="zmdi zmdi-edit"></i></a>
                                                 <a href="javascript:void(0);"
-                                                    class="btn btn-default waves-effect waves-float btn-sm waves-red mx-2"><i
+                                                    class="btn btn-default waves-effect waves-float btn-sm waves-red mx-2" (click)="deleteProduct(product.id)"><i
                                                         class="zmdi zmdi-delete"></i></a>
                                             </td>
                                         </tr>

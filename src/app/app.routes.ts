@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/client/navbar/navbar.component';
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
 import { ListProductComponent } from './components/admin/product/list-product/list-product.component';
 import { AddProductComponent } from './components/admin/product/add-product/add-product.component';
+import { EditProductComponent } from './components/admin/product/edit-product/edit-product.component';
 
 export const routes: Routes = [
     {
@@ -29,7 +30,8 @@ export const routes: Routes = [
         component: SidebarComponent,
         children: [
             { path: 'product', component: ListProductComponent },
-            { path: 'product/add', component: AddProductComponent } 
+            { path: 'product/add', component: AddProductComponent },
+            { path: 'product/edit/:id', component: EditProductComponent }
         ]
     },
 

@@ -19,8 +19,22 @@ export class ProductService {
     )
   }
 
+  getProduct(id: number): Observable<Product> {
+    return this.http.get<Product[]>(this.apiUrl + "/get" + `/${id}`).pipe(
+      map((res: any) => res.data)
+    )
+  }
+
   addProduct(product: Product): Observable<ResponseModel<Product>>{
     return this.http.post<ResponseModel<Product>>(this.apiUrl, product);
+  }
+
+  deleteProduct(id: number | undefined): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  editProduct(id: number | undefined, product: Product): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, product);
   }
 
 }
