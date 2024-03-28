@@ -20,7 +20,7 @@ export class HomeComponent {
       this.products = data;
       this.products.forEach(product => {
         if (product.price !== undefined && product.promotion !== undefined) {
-          product.price = product.price - (product.promotion * (product.price / 100))
+          product.price = +(product.price - (product.promotion * (product.price / 100))).toFixed(2)
         }
       });
     })

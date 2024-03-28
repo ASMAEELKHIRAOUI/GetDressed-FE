@@ -1,3 +1,5 @@
+import { OrderItem } from "./order-item";
+
 export interface Order {
     id?: number;
     fullName?: string;
@@ -5,7 +7,8 @@ export interface Order {
     phone?: string;
     zipcode?: string;
     address?: string;
-    status?: string
+    status?: string;
+    orderItems?: OrderItem[];
 }
 
 export class COrder implements Order{
@@ -16,6 +19,7 @@ export class COrder implements Order{
         public phone?: string,
         public zipcode?: string,
         public address?: string,
-        public status?: string
+        public status?: string,
+        public orderItems?: OrderItem[]
     ){}
 }
