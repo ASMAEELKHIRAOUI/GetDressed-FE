@@ -37,4 +37,9 @@ export class ProductService {
     return this.http.put(`${this.apiUrl}/${id}`, product);
   }
 
+  productsByCategory(category: string | undefined): Observable<Product[]> {
+    return this.http.get(this.apiUrl + "/get/category" + `/${category}`).pipe(
+      map((res: any) => res.data)
+    );
+  }
 }

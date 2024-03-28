@@ -11,13 +11,15 @@ import { EditProductComponent } from './components/admin/product/edit-product/ed
 import { ListOrderComponent } from './components/admin/order/list-order/list-order.component';
 import { EditOrderComponent } from './components/admin/order/edit-order/edit-order.component';
 import { OrderDetailsComponent } from './components/admin/order/order-details/order-details.component';
+import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
 
 export const routes: Routes = [
     {
         path: '',
         component: NavbarComponent,
         children: [
-            { path: '', component: HomeComponent }
+            { path: '', component: HomeComponent },
+            { path: 'product/:id', component: ProductDetailsComponent }
         ]
     },
     {
