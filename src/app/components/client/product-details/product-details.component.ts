@@ -82,10 +82,4 @@ export class ProductDetailsComponent {
     })
   }
 
-  // onSuccessSave(cart?: Cart) {
-  //   if (cart) {
-  //     this.carts.push(cart);
-  //   }
-  // }
-
 }
