@@ -13,8 +13,8 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
-  getCarts(): Observable<Cart[]> {
-    return this.http.get<Cart[]>(this.apiUrl).pipe(
+  getCartsByUser(): Observable<Cart[]> {
+    return this.http.get<Cart[]>(this.apiUrl + "/" + localStorage.getItem('id')).pipe(
       map((res: any) => res.data)
     )
   }

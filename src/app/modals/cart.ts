@@ -1,10 +1,12 @@
 export interface Cart {
-    product?: number;
+    id?: number;
+    product?: any;
     quantity?: number
 }
 export class CCart implements Cart {
     constructor(
-        public product?: number,
+        public id?: number,
+        public product?: any,
         public quantity?: number
     ) { }
 }
