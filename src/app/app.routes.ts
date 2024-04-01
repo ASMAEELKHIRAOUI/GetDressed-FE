@@ -14,6 +14,7 @@ import { OrderDetailsComponent } from './components/admin/order/order-details/or
 import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
 import { CartComponent } from './components/client/cart/cart.component';
 import { OrderComponent } from './components/client/order/order.component';
+import { ProfileComponent } from './components/client/profile/profile.component';
 
 export const routes: Routes = [
     {
@@ -23,7 +24,8 @@ export const routes: Routes = [
             { path: '', component: HomeComponent },
             { path: 'product/:id', component: ProductDetailsComponent },
             { path: 'cart', component: CartComponent },
-            { path: 'checkout', component: OrderComponent }
+            { path: 'checkout', component: OrderComponent },
+            { path: 'profile', component: ProfileComponent },
         ]
     },
     {

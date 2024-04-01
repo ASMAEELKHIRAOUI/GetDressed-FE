@@ -25,6 +25,12 @@ export class OrderService {
     )
   }
 
+  getUsersOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.apiUrl}`+"/user" ).pipe(
+      map((res: any) => res.data)
+    )
+  }
+
   addOrder(order: Order): Observable<ResponseModel<Order>> {
     return this.http.post<ResponseModel<Order>>(this.apiUrl, order);
   }
