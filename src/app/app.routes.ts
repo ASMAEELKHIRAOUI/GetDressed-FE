@@ -12,7 +12,8 @@ import { ListOrderComponent } from './components/admin/order/list-order/list-ord
 import { EditOrderComponent } from './components/admin/order/edit-order/edit-order.component';
 import { OrderDetailsComponent } from './components/admin/order/order-details/order-details.component';
 import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
-import { CartComponent } from './components/client/cart/cart/cart.component';
+import { CartComponent } from './components/client/cart/cart.component';
+import { OrderComponent } from './components/client/order/order.component';
 
 export const routes: Routes = [
     {
@@ -21,7 +22,8 @@ export const routes: Routes = [
         children: [
             { path: '', component: HomeComponent },
             { path: 'product/:id', component: ProductDetailsComponent },
-            { path: 'cart', component: CartComponent }
+            { path: 'cart', component: CartComponent },
+            { path: 'checkout', component: OrderComponent }
         ]
     },
     {
