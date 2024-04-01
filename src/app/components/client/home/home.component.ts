@@ -19,6 +19,7 @@ export class HomeComponent {
   products: Product[] = [];
   toSave: Cart = new CCart();
   productQuantities: { [productId: number]: number } = {};
+  searchTerm: string = '';
 
   constructor(private productService: ProductService, private router: Router, private cartService: CartService) { }
 
@@ -60,6 +61,49 @@ export class HomeComponent {
         // this.notificationService.show([err.error.date[0]], 'error');
       }
     })
+  }
+
+  // search(search: string){
+  //   this.products = []
+  //   this.productService.search(search).subscribe((data: Product[]) => {
+  //     this.products = data;
+  //     this.products.forEach(product => {
+  //       if (product.id !== undefined) {
+  //         this.productQuantities[product.id] = 1;
+  //       }
+  //       if (product.price !== undefined && product.promotion !== undefined) {
+  //         product.price = +(product.price - (product.promotion * (product.price / 100))).toFixed(2)
+  //       }
+  //     });
+  //   })
+  // }
+
+  search(searchTerm: string) {
+    if (searchTerm.trim() === '') {
+      // If the search string is empty, fetch all products
+      this.productService.getProducts().subscribe((data: Product[]) => {
+        this.products = data;
+        this.updateProductQuantities();
+      });
+    } else {
+      // If there's a search string, filter products based on it
+      this.productService.search(searchTerm).subscribe((data: Product[]) => {
+        this.products = data;
+        this.updateProductQuantities();
+      });
+    }
+  }
+  
+  updateProductQuantities() {
+    this.productQuantities = {};
+    this.products.forEach(product => {
+      if (product.id !== undefined) {
+        this.productQuantities[product.id] = 1;
+      }
+      if (product.price !== undefined && product.promotion !== undefined) {
+        product.price = +(product.price - (product.promotion * (product.price / 100))).toFixed(2);
+      }
+    });
   }
 
 }

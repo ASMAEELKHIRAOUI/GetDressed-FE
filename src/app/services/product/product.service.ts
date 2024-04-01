@@ -19,6 +19,12 @@ export class ProductService {
     )
   }
 
+  search(search: string): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl + "/search/" + search).pipe(
+      map((res: any) => res.data)
+    )
+  }
+
   getProduct(id: number): Observable<Product> {
     return this.http.get<Product[]>(this.apiUrl + "/get" + `/${id}`).pipe(
       map((res: any) => res.data)
