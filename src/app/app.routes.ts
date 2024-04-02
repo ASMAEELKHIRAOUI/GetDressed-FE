@@ -15,6 +15,8 @@ import { ProductDetailsComponent } from './components/client/product-details/pro
 import { CartComponent } from './components/client/cart/cart.component';
 import { OrderComponent } from './components/client/order/order.component';
 import { ProfileComponent } from './components/client/profile/profile.component';
+import { adminGuard } from './guards/admin/admin.guard';
+import { authGuard } from './guards/auth/auth.guard';
 
 export const routes: Routes = [
     {
@@ -23,9 +25,9 @@ export const routes: Routes = [
         children: [
             { path: '', component: HomeComponent },
             { path: 'product/:id', component: ProductDetailsComponent },
-            { path: 'cart', component: CartComponent },
-            { path: 'checkout', component: OrderComponent },
-            { path: 'profile', component: ProfileComponent },
+            { path: 'cart', component: CartComponent, canActivate: [authGuard] },
+            { path: 'checkout', component: OrderComponent, canActivate: [authGuard] },
+            { path: 'profile', component: ProfileComponent, canActivate: [authGuard] }
         ]
     },
     {
@@ -39,6 +41,7 @@ export const routes: Routes = [
     {
         path: 'dashboard',
         component: SidebarComponent,
+        canActivate:[adminGuard],
         children: [
             { path: 'product', component: ListProductComponent },
             { path: 'product/add', component: AddProductComponent },

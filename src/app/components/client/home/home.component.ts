@@ -45,38 +45,28 @@ export class HomeComponent {
   }
 
   onSubmit(productId: number | undefined) {
-    this.toSave.product = productId
-    this.toSave.quantity = this.productQuantities[productId ? productId : 0]
-    console.log(this.toSave.product)
-    console.log(this.toSave.quantity)
-    this.cartService.addCart(this.toSave).subscribe({
-      next: data => {
-        // this.onSuccessSave(data?.data);
-        console.log("Success")
-        // this.notificationService.show(['Cart added successfully'], 'success');
-        // this.router.navigate(['/dashboard/cart']);
-      },
-      error: (err) => {
-        console.log(err.error.date[0])
-        // this.notificationService.show([err.error.date[0]], 'error');
-      }
-    })
+    const jwt = localStorage.getItem("token")
+    if (!jwt) {
+      this.router.navigate(["/auth/login"])
+    } else {
+      this.toSave.product = productId
+      this.toSave.quantity = this.productQuantities[productId ? productId : 0]
+      console.log(this.toSave.product)
+      console.log(this.toSave.quantity)
+      this.cartService.addCart(this.toSave).subscribe({
+        next: data => {
+          // this.onSuccessSave(data?.data);
+          console.log("Success")
+          // this.notificationService.show(['Cart added successfully'], 'success');
+          // this.router.navigate(['/dashboard/cart']);
+        },
+        error: (err) => {
+          console.log(err.error.date[0])
+          // this.notificationService.show([err.error.date[0]], 'error');
+        }
+      })
+    }
   }
-
-  // search(search: string){
-  //   this.products = []
-  //   this.productService.search(search).subscribe((data: Product[]) => {
-  //     this.products = data;
-  //     this.products.forEach(product => {
-  //       if (product.id !== undefined) {
-  //         this.productQuantities[product.id] = 1;
-  //       }
-  //       if (product.price !== undefined && product.promotion !== undefined) {
-  //         product.price = +(product.price - (product.promotion * (product.price / 100))).toFixed(2)
-  //       }
-  //     });
-  //   })
-  // }
 
   search(searchTerm: string) {
     if (searchTerm.trim() === '') {
@@ -93,7 +83,7 @@ export class HomeComponent {
       });
     }
   }
-  
+
   updateProductQuantities() {
     this.productQuantities = {};
     this.products.forEach(product => {
